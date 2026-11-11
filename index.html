@@ -68,13 +68,25 @@ nav.top a.on{box-shadow:inset 0 -3px 0 var(--gold)}
 /* hero */
 .hero{padding:clamp(48px,9vw,120px) 0 0}
 .hero .tag{display:inline-flex;align-items:center;gap:10px;font-family:var(--u);font-weight:700;font-size:13px;letter-spacing:.14em;color:var(--gold);margin-bottom:28px}
-.hero h1{font-family:var(--u);font-weight:900;font-size:clamp(42px,8.4vw,116px);line-height:.98;letter-spacing:-.035em;max-width:11ch}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:clamp(32px,5vw,72px);align-items:stretch}
+.hero h1{font-family:var(--u);font-weight:900;font-size:clamp(40px,6.3vw,84px);line-height:1;letter-spacing:-.035em}
+.ticket{position:relative;background:var(--gold);color:var(--ink);min-height:500px;display:block;transition:transform .15s}
+.ticket:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--line)}
+.ticket::before{content:"";position:absolute;left:-12px;top:0;bottom:0;width:12px;background:repeating-linear-gradient(to bottom,var(--gold) 0 12px,transparent 12px 24px)}
+.tk-clip{position:absolute;inset:0;overflow:hidden}
+.tk-clip::before{content:"";position:absolute;right:0;top:0;width:144px;height:144px;background:conic-gradient(#d9ae45 25%,transparent 0 50%,#d9ae45 0 75%,transparent 0) 0 0/24px 24px;-webkit-mask:linear-gradient(225deg,#000 0 38%,transparent 38%);mask:linear-gradient(225deg,#000 0 38%,transparent 38%)}
+.tk-lbl{position:absolute;left:24px;top:22px;font-family:var(--u);font-weight:900;font-size:11px;letter-spacing:.16em;background:var(--ink);color:var(--gold);padding:6px 9px}
+.tk-tier{position:absolute;left:20px;top:58px;font-family:var(--u);font-weight:900;font-size:150px;line-height:1;letter-spacing:-.05em}
+.tk-clip img{position:absolute;left:4%;bottom:56px;height:68%;filter:drop-shadow(10px 0 0 #d9ae45)}
+.tk-bot{position:absolute;left:0;right:0;bottom:0;background:var(--ink);border:2px solid var(--gold);border-top:0;color:var(--paper);display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 20px;height:64px;font-family:var(--u);font-weight:900;font-size:20px}
+.tk-bot span{font-weight:700;font-size:13px;color:var(--gold);display:flex;gap:8px;align-items:center}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}.ticket{min-height:380px;margin-left:12px}.tk-tier{font-size:112px;top:60px}.tk-clip img{left:auto;right:2%;height:74%}}
 .hero h1 em{font-style:normal;color:var(--ink);background:var(--gold);padding:0 .12em;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-.hero-row{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end;margin-top:40px}
+.hero-row{display:flex;flex-direction:column;gap:28px;margin-top:32px}
 .hero p{font-size:clamp(17px,1.6vw,20px);color:var(--mute);max-width:46ch}
 .hero p b{color:var(--paper);font-weight:500}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
-@media (max-width:820px){.hero-row{grid-template-columns:1fr;gap:28px}.hero .cta .btn{flex:1;justify-content:center}}
+@media (max-width:520px){.hero .cta .btn{flex:1;justify-content:center}}
 
 .motto{margin-top:clamp(48px,7vw,88px);border-top:2px solid var(--line);border-bottom:2px solid var(--line);overflow:hidden;white-space:nowrap}
 .motto div{display:inline-block;font-family:var(--u);font-weight:900;font-size:clamp(18px,2.2vw,26px);letter-spacing:.02em;padding:14px 0;animation:run 26s linear infinite;color:var(--mute)}
@@ -101,7 +113,9 @@ nav.top a.on{box-shadow:inset 0 -3px 0 var(--gold)}
 @media (max-width:1000px){.modes{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:720px){.modes{grid-template-columns:repeat(2,1fr)}}
 .mode{position:relative;background:var(--ink);padding:22px 20px 20px;display:flex;flex-direction:column;min-height:228px;transition:background .15s}
-.mode:hover{background:var(--ink-2)}
+.mode:hover{background:var(--gold);color:var(--ink)}
+.mode:hover p,.mode:hover .n,.mode:hover .n small,.mode:hover .go{color:var(--ink)}
+.mode:hover .new{background:var(--ink);color:var(--gold)}
 .mode .ico{width:64px;height:64px;margin-bottom:auto}
 .mode h3{font-family:var(--u);font-weight:700;font-size:19px;letter-spacing:-.01em;margin-top:22px}
 .mode p{font-size:14px;color:var(--mute);margin-top:4px;line-height:1.35}
@@ -112,6 +126,25 @@ nav.top a.on{box-shadow:inset 0 -3px 0 var(--gold)}
 .mode:hover .go{text-decoration:underline;text-underline-offset:4px}
 @media (max-width:520px){.mode{min-height:200px;padding:16px 14px}.mode .ico{width:48px;height:48px}.mode h3{font-size:16px;margin-top:16px}.mode .n{top:14px;right:12px;font-size:16px}.mode .new{left:70px;top:16px}.coach{padding:20px 18px}.ava{width:48px;height:48px;font-size:19px}.c-rate b{font-size:20px}}
 
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line);border:2px solid var(--line)}
+.step{background:var(--ink);padding:28px 24px 30px}
+.step i{display:block;font-style:normal;font-family:var(--u);font-weight:900;font-size:64px;line-height:1;color:var(--gold);letter-spacing:-.04em}
+.step h3{font-family:var(--u);font-weight:700;font-size:20px;margin-top:18px;letter-spacing:-.01em}
+.step p{color:var(--mute);margin-top:8px;font-size:15px}
+@media (max-width:820px){.steps{grid-template-columns:1fr}.step{display:grid;grid-template-columns:72px 1fr;column-gap:8px;padding:22px 18px}.step i{grid-row:span 2;font-size:52px}.step h3{margin-top:2px}}
+/* reviews */
+.revs{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rv{border:2px solid var(--line);display:flex;flex-direction:column}
+.rv-top{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--gold);color:var(--ink);padding:14px 18px}
+.rv-top b{font-family:var(--u);font-weight:900;font-size:17px;overflow-wrap:anywhere}
+.rv-top small{display:block;font-family:var(--u);font-weight:700;font-size:10px;letter-spacing:.14em;opacity:.7}
+.rv-stars{display:flex;gap:3px;flex:none}
+.rv q{display:block;padding:20px 18px;font-size:17px;line-height:1.45;flex:1}
+.rv q::before,.rv q::after{content:none}
+.rv footer{margin:0;padding:14px 18px;border-top:2px solid var(--line);font-size:14px;color:var(--mute);display:flex;justify-content:space-between;gap:10px}
+.rv footer b{color:var(--paper);font-weight:600}
+@media (max-width:900px){.revs{grid-template-columns:1fr}}
 /* screenshare banner */
 .ss{margin-top:clamp(64px,9vw,120px);background:var(--gold);color:var(--ink);position:relative}
 .ss .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;padding-top:clamp(40px,6vw,72px);padding-bottom:clamp(40px,6vw,72px);align-items:center}
@@ -224,6 +257,8 @@ footer .wrap{display:flex;gap:24px;justify-content:space-between;flex-wrap:wrap;
 const P = {
   star:{c:{a:'#ecc45c'},r:[
     ".....a.....",".....a.....","....aaa....","aaaaaaaaaaa",".aaaaaaaaa.","..aaaaaaa..","..aaaaaaa..",".aaaa.aaaa.",".aa.....aa."]},
+  starK:{c:{a:'#0d1711'},r:[
+    "....a....","....a....","...aaa...","aaaaaaaaa",".aaaaaaa.","..aaaaa..","..aaaaa..",".aaa.aaa.",".a.....a."]},
   menu:{c:{a:'#f3efe2'},r:["aaaaaaa",".......","aaaaaaa",".......","aaaaaaa"]},
   helmD:{c:{a:'#7fe3d4',b:'#3fb5a5',c:'#1f6b62',d:'#0d1711'},r:[
     "...aaaaaa...","..aaaaaaab..",".aaaaaaabbb.","aaabbbbbbbbc","aabbbbbbbbbc","abbc....cbbc","abc......cbc","abc......cbc","bbc......ccc","bc........cc"]},
@@ -292,6 +327,12 @@ const CHECKERS=[
   {nick:'almazidxllas',exp:'1 год',bio:'Обучил проверкам 7+ человек. Обучение проходит от 4 до 7 занятий.',rate:10,cnt:1,price:700,unit:'сеанс'},
   {nick:'ItzKpolik',exp:'2,5 года',bio:'Опыт в СС около 2-х лет, научу находить читы.',price:200,unit:'час'}
 ];
+const REVIEWS=[
+  {coach:'kuuro4ka',who:'yowloo200',mode:'Кристаллы',t:'Четко все объяснил и подловил 4 раза, а так 10/10, всем советую.'},
+  {coach:'Cr1ll',who:'bixыры',mode:'Creeper',t:'Показал все механики и объяснил всю логику файта от начала до конца, считай глаза раскрыл. Был очень добр.'},
+  {coach:'foxy_CPVP',who:'YaNekit',mode:'Creeper',t:'Особо ниче не узнал т.к уже все знал, но зубы мне повыбивали.'}
+];
+COACHES.cart=[{nick:'kyba4',tier:'LT2',free:true,last:'',bio:'Новый тренер в команде ProCoaching.',tags:['новичкам'],rate:null,cnt:0,price:200}];
 const FILTERS=['Все','опытным','популярный','медиа','новичкам','быстро тренит','маленькая цена','рекомендуют клиенты'];
 const AVA=['#ecc45c','#7fe3d4','#d77bd0','#e2735c','#7ed492','#c9ccd1'];
 const ava=n=>AVA[[...n].reduce((a,c)=>a+c.charCodeAt(0),0)%AVA.length];
@@ -301,16 +342,23 @@ const word=(n,f)=>{const a=n%10,b=n%100;return f[(a===1&&b!==11)?0:(a>=2&&a<=4&&
 /* ---------- views ---------- */
 function home(){
   return `
-  <section class="hero"><div class="wrap">
-    <div class="tag"><i data-px="star" data-s="2"></i>ОБУЧЕНИЕ PVP ОТ ТОП-ИГРОКОВ СНГ</div>
-    <h1>Твои высокие <em>тиры</em> начинаются здесь</h1>
-    <div class="hero-row">
-      <p>Тренировки один на один с игроками из топа CIS tiers. <b>Результат — с первого занятия.</b></p>
-      <div class="cta">
-        <a class="btn gold" href="#modes">Начать тренировку ${px('arrow',2)}</a>
-        <a class="btn" href="#/screenshare">Screenshare</a>
+  <section class="hero"><div class="wrap hero-grid">
+    <div>
+      <div class="tag"><i data-px="star" data-s="2"></i>ОБУЧЕНИЕ PVP ОТ ТОП-ИГРОКОВ СНГ</div>
+      <h1>Твои высокие <em>тиры</em> начинаются здесь</h1>
+      <div class="hero-row">
+        <p>Тренировки один на один с игроками из топа CIS tiers. <b>Результат — с первого занятия.</b></p>
+        <div class="cta">
+          <a class="btn gold" href="#modes">Начать тренировку ${px('arrow',2)}</a>
+          <a class="btn" href="#/screenshare">Screenshare</a>
+        </div>
       </div>
     </div>
+    <a class="ticket" href="#/mode/cart" aria-label="Новый тренер kyba4, LT2, Cart, 200 ₽">
+      <span class="tk-clip"><span class="tk-tier">LT2</span><img src="img/kyba4.png" alt=""></span>
+      <span class="tk-lbl">НОВЫЙ ТРЕНЕР</span>
+      <span class="tk-bot">kyba4<span>Cart · 200 ₽ ${px('arrow',2)}</span></span>
+    </a>
   </div>
   <div class="motto" aria-hidden="true"><div>${('ТРЕНИРУЙСЯ<i>■</i>СОВЕРШЕНСТВУЙСЯ<i>■</i>ДОМИНИРУЙ<i>■</i>').repeat(6)}</div></div>
   <div class="wrap stats">
@@ -330,6 +378,25 @@ function home(){
         <span class="go">Тренеры ${px('arrow',2)}</span>
       </a>`).join('')}
     </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><h2>Как это работает</h2></div>
+    <div class="steps">
+      <div class="step"><i>1</i><h3>Выбери режим</h3><p>12 режимов — от Бистов и Кристаллов до Cart и Creeper.</p></div>
+      <div class="step"><i>2</i><h3>Выбери тренера</h3><p>Смотри тир, цену за час, рейтинг и отзывы учеников.</p></div>
+      <div class="step"><i>3</i><h3>Тренируйся</h3><p>Занятие один на один. После него оставь отзыв тренеру.</p></div>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><h2>Отзывы</h2><p>Пишут ученики после тренировок — как есть.</p></div>
+    <div class="revs">${REVIEWS.map(r=>`
+      <article class="rv">
+        <div class="rv-top"><div><small>ТРЕНЕР</small><b>${esc(r.coach)}</b></div><div class="rv-stars" aria-label="5 из 5">${px('starK',2).repeat(5)}</div></div>
+        <q>${esc(r.t)}</q>
+        <footer><b>${esc(r.who)}</b><span>${r.mode}</span></footer>
+      </article>`).join('')}</div>
   </div></section>
 
   <section class="ss"><span class="teeth t"></span><div class="wrap">
@@ -377,7 +444,7 @@ function modeView(id){
       </div>
       <div class="chips" role="group" aria-label="Фильтр">${FILTERS.map(f=>`<button class="chip ${st.f===f?'on':''}" data-f="${f}">${f}</button>`).join('')}</div>
       <div id="list"></div>
-      ${has?'':`<p class="note">В концепте тренеры заполнены только для режима Creeper — на живом сайте здесь будет список из ${m.n} ${word(m.n,['тренера','тренеров','тренеров'])}.</p>`}
+      ${has?'':`<p class="note">В концепте тренеры заполнены только для режимов Creeper и Cart — на живом сайте здесь будет список из ${m.n} ${word(m.n,['тренера','тренеров','тренеров'])}.</p>`}
     </div>`;
 }
 function renderList(id){
